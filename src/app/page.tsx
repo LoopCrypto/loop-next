@@ -1,9 +1,22 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+
+import Image from 'next/image';
+import styles from './page.module.css';
+import initializeLoopCheckoutWidget from '@loop-crypto/loop-checkout-widget';
 
 export default function Home() {
+  const { openWidget } = initializeLoopCheckoutWidget({
+    entityId: '12616559-e2fa-4728-9c7f-1bd8869ea9e1',
+  });
+
   return (
     <main className={styles.main}>
+      <button
+        onClick={(event) => openWidget('1f857dec-82a7-45b9-981d-9ed0a8eb0852')}
+      >
+        Open checkout
+      </button>
+
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
@@ -91,5 +104,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
